@@ -5,11 +5,14 @@
   place-items: center;
   justify-content: center;
   position: relative;
+  z-index: 20;
   opacity: 1;
   height: auto;
   margin: auto;
   margin-bottom: 250px;
   padding: 120px 0px;
+  background-color: var(--backgroundColor);
+  isolation: isolate;
 }
 
 .career-section h2 {

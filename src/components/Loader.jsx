@@ -3,7 +3,7 @@ import '../styles/loader.css';
 
 export default function Loader({ onComplete }) {
   const [hidden, setHidden] = useState(false);
-  const name = 'YASHAS';
+  const name = 'YASHAS M';
 
   useEffect(() => {
     const timer = setTimeout(() => {

@@ -13,6 +13,10 @@
   height: 100vh;
   box-sizing: border-box;
   will-change: transform;
+  position: relative;
+  z-index: 20;
+  background-color: var(--backgroundColor);
+  isolation: isolate;
 }
 
 .work-container {

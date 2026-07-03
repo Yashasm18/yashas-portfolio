@@ -13,11 +13,11 @@ export default function Footer() {
           <div className="footer-col">
             <div className="footer-group">
               <span className="footer-label">Email</span>
-              <a href="mailto:yashas.m@example.com" className="footer-text">yashas.m@example.com</a>
+              <a href="mailto:yashasm1807@gmail.com" className="footer-text">yashasm1807@gmail.com</a>
             </div>
             <div className="footer-group">
               <span className="footer-label">Location</span>
-              <span className="footer-text">India</span>
+              <span className="footer-text">Bengaluru, Karnataka, India</span>
             </div>
           </div>
 
@@ -25,10 +25,10 @@ export default function Footer() {
           <div className="footer-col">
             <span className="footer-label">Social</span>
             <ul className="footer-social-list">
-              <li><a href="https://github.com/yashas-m" target="_blank" rel="noreferrer">Github ↗</a></li>
-              <li><a href="https://linkedin.com/in/yashas-m" target="_blank" rel="noreferrer">Linkedin ↗</a></li>
-              <li><a href="https://twitter.com/yashasm" target="_blank" rel="noreferrer">Twitter ↗</a></li>
-              <li><a href="https://instagram.com/yashasm" target="_blank" rel="noreferrer">Instagram ↗</a></li>
+              <li><a href="https://github.com/yashasm1807" target="_blank" rel="noreferrer">Github ↗</a></li>
+              <li><a href="https://linkedin.com/in/yashasm1807" target="_blank" rel="noreferrer">Linkedin ↗</a></li>
+              <li><a href="https://x.com/yashasm1807" target="_blank" rel="noreferrer">Twitter ↗</a></li>
+              <li><a href="https://instagram.com/yashasm1807" target="_blank" rel="noreferrer">Instagram ↗</a></li>
             </ul>
           </div>
 

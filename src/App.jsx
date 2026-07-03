@@ -2,9 +2,12 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
-import Scene from "./components/Scene";
-import MainContainer from "./components/MainContainer";
 import { LoadingProvider } from "./context/LoadingProvider";
+
+const Scene = lazy(() => import("./components/Scene"));
+const MainContainer = lazy(() => import("./components/MainContainer"));
+const MyWorks = lazy(() => import("./pages/MyWorks"));
+const Play = lazy(() => import("./pages/Play"));
 
 const App = () => {
   return (
@@ -22,6 +25,22 @@ const App = () => {
                 </MainContainer>
               </Suspense>
             </LoadingProvider>
+          }
+        />
+        <Route
+          path="/myworks"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <MyWorks />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/play"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Play />
+            </Suspense>
           }
         />
       </Routes>

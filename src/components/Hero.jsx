@@ -35,7 +35,7 @@ export default function Hero() {
         style={{ transform: `translate(${mousePos.x * 0.5}px, ${mousePos.y * 0.5}px)` }}
       >
         <p className="hero-an">An</p>
-        <h2 className="hero-role-outline">AI ENGINEER</h2>
+        <h2 className="hero-role-outline">SOFTWARE ENGINEER</h2>
         <h2 className="hero-role-solid">FULL-STACK DEV</h2>
       </div>
       

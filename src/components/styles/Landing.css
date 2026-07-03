@@ -146,6 +146,24 @@
     object-fit: contain;
     filter: drop-shadow(0 0 40px rgba(194, 164, 255, 0.4));
   }
+
+  .mobile-photo-placeholder {
+    width: min(58vw, 260px);
+    aspect-ratio: 1;
+    margin: 24px auto 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--accentColor);
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    background:
+      radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.14), transparent 26%),
+      linear-gradient(135deg, rgba(251, 141, 255, 0.2), rgba(194, 164, 255, 0.08));
+    border: 1px solid rgba(194, 164, 255, 0.25);
+    box-shadow: 0 0 45px rgba(194, 164, 255, 0.22);
+  }
 }
 
 .landing-section {
@@ -495,18 +513,18 @@ h2.landing-info-h2 {
   .landing-intro {
     top: 40%;
     left: auto;
-    right: 58%;
+    right: 68%;
     transform: translate(0%, -50%);
   }
 
   .landing-info {
     bottom: auto;
-    top: 51%;
+    top: 50%;
     z-index: inherit;
     text-align: left;
     transform: translate(0%, -50%);
     right: auto;
-    left: 62%;
+    left: 68%;
   }
 }
 
@@ -514,18 +532,18 @@ h2.landing-info-h2 {
   .landing-intro {
     top: 40%;
     left: auto;
-    right: 62%;
+    right: 67%;
     transform: translate(0%, -50%);
   }
 
   .landing-info {
     bottom: auto;
-    top: 51%;
+    top: 50%;
     z-index: inherit;
     text-align: left;
     transform: translate(0%, -50%);
     right: auto;
-    left: 62%;
+    left: 68.5%;
   }
 }
 
@@ -544,11 +562,11 @@ h2.landing-info-h2 {
   }
 
   .landing-info h2 {
-    font-size: 65px;
-    line-height: 62px;
+    font-size: 58px;
+    line-height: 58px;
   }
 
   h2.landing-info-h2 {
-    font-size: 75px;
+    font-size: 68px;
   }
 }

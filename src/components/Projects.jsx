@@ -4,31 +4,31 @@ import '../styles/projects.css';
 const projects = [
   {
     number: '01',
-    title: 'Drishti',
-    category: 'AI / LLM',
-    tools: 'Python, PyTorch, Transformers, FastAPI, React, MongoDB',
-    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop', // Placeholder since I don't have the real image
+    title: 'Project 01',
+    category: 'AI / Software',
+    tools: 'Python, React, APIs, Automation',
+    image: '/images/placeholder.webp',
   },
   {
     number: '02',
-    title: 'VoteChain',
-    category: 'Blockchain',
-    tools: 'Solidity, Web3.js, React, Ethereum, IPFS, MetaMask, Node.js',
-    image: 'https://images.unsplash.com/photo-1639762681485-074b7f4ec651?q=80&w=800&auto=format&fit=crop',
+    title: 'Project 02',
+    category: 'Full Stack',
+    tools: 'React, Node.js, Database, REST APIs',
+    image: '/images/placeholder.webp',
   },
   {
     number: '03',
-    title: 'EIE - Earthquake Impact Estimator',
-    category: 'IoT / Hardware',
-    tools: 'Arduino, C++, IoT Sensors, Python, ML, React',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop',
+    title: 'Project 03',
+    category: 'Automation',
+    tools: 'Python, Scripts, APIs, Workflows',
+    image: '/images/placeholder.webp',
   },
   {
     number: '04',
-    title: 'GameKroy',
-    category: 'Full Stack',
-    tools: 'React, Node.js, MongoDB, Express, Stripe, TailwindCSS',
-    image: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800&auto=format&fit=crop',
+    title: 'Project 04',
+    category: 'Web App',
+    tools: 'React, UI Design, Backend, Deployment',
+    image: '/images/placeholder.webp',
   }
 ];
 
