@@ -12,7 +12,7 @@ export const config = {
     },
     about: {
         title: "About Me",
-        description: "I am an AI & Full-Stack Developer building intelligent systems, chatbots, and modern web applications. My work spans Machine Learning, Deep Learning, NLP, and full-stack development with React, Node.js, and Python. I enjoy creating practical AI agents, polished interfaces, and automation that makes complex workflows feel simple."
+        description: "Software Engineer focused on building scalable web applications, backend systems, and AI-powered products. I work across full-stack development, system design, and automation—creating reliable software, clean architectures, and seamless digital experiences that solve real-world problems."
     },
     experiences: [
         {

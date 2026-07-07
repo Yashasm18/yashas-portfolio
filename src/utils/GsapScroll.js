@@ -37,6 +37,12 @@ export function setCharTimeline(
       end: "bottom top",
       scrub: true,
       invalidateOnRefresh: true,
+      onLeave: () => {
+        gsap.set(".character-model", { autoAlpha: 0, display: "none" });
+      },
+      onEnterBack: () => {
+        gsap.set(".character-model", { autoAlpha: 1, display: "block" });
+      }
     },
   });
   let screenLight, monitor;
@@ -133,26 +139,6 @@ export function setCharTimeline(
         )
         .fromTo(".whatIDO", { y: 0 }, { y: "15%", duration: 2 }, 0)
         .to(character.rotation, { x: -0.04, duration: 2, delay: 1 }, 0);
-
-      ScrollTrigger.create({
-        trigger: ".career-section",
-        start: "top bottom",
-        invalidateOnRefresh: true,
-        onEnter: () => {
-          gsap.set(".character-model", {
-            autoAlpha: 0,
-            display: "none",
-            pointerEvents: "none"
-          });
-        },
-        onLeaveBack: () => {
-          gsap.set(".character-model", {
-            autoAlpha: 1,
-            display: "block",
-            pointerEvents: "none"
-          });
-        }
-      });
     }
   } else {
     if (character) {

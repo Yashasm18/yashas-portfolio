@@ -287,6 +287,17 @@
   font-size: 60px;
   font-weight: 600;
   text-transform: uppercase;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.loading-marquee > div {
+  display: flex;
+  white-space: nowrap;
+  animation: marqueeScroll 8s linear infinite;
+}
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 .loading-marquee span {
   padding: 0px 50px;

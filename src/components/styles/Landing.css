@@ -4,7 +4,7 @@
 }
 
 /* Remove mobile photo and ensure 3D character is always hidden on mobile */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
   .character-model {
     display: none !important;
   }
@@ -112,11 +112,15 @@
     font-size: 24px !important;
     color: var(--accentColor);
     font-weight: 700;
+    white-space: nowrap;
+    text-align: center;
   }
 
   .landing-h2-info {
     font-size: 18px !important;
     color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+    text-align: center;
   }
 
   .landing-info-h2::after {
@@ -371,6 +375,9 @@
   bottom: 40px;
   top: inherit;
   z-index: 9;
+  width: auto;
+  max-width: none;
+  overflow: visible;
 }
 
 .landing-info h3 {
@@ -395,6 +402,8 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   white-space: nowrap;
+  width: auto;
+  max-width: none;
 }
 
 .landing-h2-info {
@@ -410,12 +419,14 @@
 h2.landing-info-h2 {
   color: #c481ff;
   font-size: 36px;
-  width: 150%;
+  width: auto;
+  max-width: none;
   margin: 0;
   font-family: "Geist", sans-serif;
   font-weight: 600;
   position: relative;
   margin-left: -5px;
+  white-space: nowrap;
 }
 
 .landing-h2-2 {
@@ -524,7 +535,9 @@ h2.landing-info-h2 {
     text-align: left;
     transform: translate(0%, -50%);
     right: auto;
-    left: 68%;
+    left: 65%;
+    width: auto;
+    max-width: none;
   }
 }
 
@@ -543,7 +556,9 @@ h2.landing-info-h2 {
     text-align: left;
     transform: translate(0%, -50%);
     right: auto;
-    left: 68.5%;
+    left: 65%;
+    width: auto;
+    max-width: none;
   }
 }
 

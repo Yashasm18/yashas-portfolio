@@ -6,7 +6,7 @@
   font-optical-sizing: auto;
   font-style: normal;
   line-height: 1.5;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   color-scheme: light dark;
   color: #eae5ec;
   background-color: var(--backgroundColor);
