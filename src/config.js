@@ -168,11 +168,10 @@ export const config = {
     ],
     contact: {
         email: "yashasm1807@gmail.com",
-        github: "https://github.com/yashasm1807",
-        linkedin: "https://linkedin.com/in/yashasm1807",
-        twitter: "https://x.com/yashasm1807",
-        facebook: "https://www.facebook.com/yashasm1807",
-        instagram: "https://www.instagram.com/yashasm1807"
+        github: "https://github.com/Yashasm18",
+        linkedin: "https://www.linkedin.com/in/yashasm18",
+        twitter: "https://x.com/YashasYashu_",
+        instagram: "https://www.instagram.com/_yashxss_/"
     },
     skills: {
         develop: {
