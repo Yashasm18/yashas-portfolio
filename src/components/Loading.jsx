@@ -26,6 +26,7 @@ const Loading = ({ percent }) => {
           if (module.initialFX) {
             module.initialFX();
           }
+          sessionStorage.setItem('siteLoaded', 'true');
           setIsLoading(false);
         }, 900);
       }

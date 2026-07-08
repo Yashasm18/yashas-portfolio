@@ -44,10 +44,22 @@ const Navbar = () => {
         }
       });
     });
+    // Restore scroll position on mount if we're coming back
+    const savedScroll = sessionStorage.getItem('homeScrollPos');
+    if (savedScroll) {
+      setTimeout(() => {
+        window.scrollTo(0, parseInt(savedScroll, 10));
+        if (lenis) {
+          lenis.scrollTo(parseInt(savedScroll, 10), { immediate: true });
+        }
+      }, 50);
+    }
+
     window.addEventListener("resize", () => {
       lenis?.resize();
     });
     return () => {
+      sessionStorage.setItem('homeScrollPos', window.scrollY.toString());
       lenis?.destroy();
     };
   }, []);
