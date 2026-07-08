@@ -38,7 +38,7 @@
 
 .what-box-in {
   flex-direction: column;
-  height: 500px;
+  height: 900px;
   margin-left: 200px;
   position: relative;
   display: flex;
@@ -46,25 +46,25 @@
 
 .what-content {
   width: 450px;
-  height: 33%;
+  height: 50%;
   min-height: 50%;
   transition: 0.5s;
   /* border: 0.5px dashed rgba(255, 255, 255, 0.3); */
   position: relative;
-  padding: 50px;
+  padding: 40px 50px;
   box-sizing: border-box;
 }
 
 .what-noTouch:hover,
 .what-content-active {
-  min-height: 67%;
+  min-height: 75%;
   padding: 40px 50px;
 }
 
 .what-noTouch:hover~.what-content,
 .what-box-in:hover .what-noTouch:not(:hover),
 .what-content.what-sibling {
-  min-height: 33%;
+  min-height: 25%;
   padding: 10px 50px;
 }
 

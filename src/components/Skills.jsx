@@ -3,10 +3,10 @@ import '../styles/skills.css';
 
 const services = [
   {
-    title: 'AI DEVELOPER',
-    subtitle: 'Building intelligent systems & AI solutions',
-    desc: 'Developing AI agents, chatbots, and machine learning models using Python, PyTorch, and Transformers to solve complex problems and automate workflows.',
-    tools: ['Python', 'PyTorch', 'Transformers', 'FastAPI']
+    title: 'SOFTWARE ENGINEER',
+    subtitle: 'Designing robust systems & scalable software',
+    desc: 'Building reliable, maintainable software through clean architecture, efficient algorithms, and solid engineering practices. Focused on system design, performance optimization, and delivering production-ready applications.',
+    tools: ['Java', 'Python', 'C++', 'DSA', 'System Design', 'OOP', 'REST APIs', 'CI/CD', 'Testing', 'Git']
   },
   {
     title: 'FULL-STACK',

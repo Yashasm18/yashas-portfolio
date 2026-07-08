@@ -16,88 +16,88 @@ export const config = {
     },
     experiences: [
         {
-            position: "Learning Something New",
-            company: "Self-Development",
-            period: "2025 - Present",
+            position: "SDE & Full Stack Developer",
+            company: "Learning & Building",
+            period: "2026 - Present",
             location: "Bengaluru, Karnataka, India",
-            description: "Continuously exploring emerging technologies, researching advanced AI systems, and pushing the boundaries of what's possible in tech.",
+            description: "Grinding DSA and sharpening full-stack skills through real projects. On the path to cracking SDE roles.",
             responsibilities: [
-                "Researching cutting-edge AI and ML technologies",
-                "Experimenting with new frameworks and tools",
-                "Contributing to open-source projects",
-                "Building innovative personal projects"
+                "Practicing DSA daily with LeetCode and contests",
+                "Building full-stack projects with React and Node.js",
+                "Studying system design fundamentals",
+                "Preparing for SDE interviews"
             ],
-            technologies: ["Research", "Innovation", "Open Source", "New Tech"]
+            technologies: ["Java", "Python", "DSA", "React", "Node.js", "System Design"]
         },
         {
-            position: "AI Engineer",
-            company: "Freelance & Projects",
+            position: "AI Annotator & Evaluator",
+            company: "Freelance",
+            period: "2026",
+            location: "Bengaluru, Karnataka, India",
+            description: "Evaluating and annotating AI/ML datasets across Outlier, Mercor, RWS TrainAI and DataAnnotation.tech. Gaining deep insight into LLM behaviour and model quality.",
+            responsibilities: [
+                "Evaluating AI/ML model outputs for quality",
+                "Annotating datasets for training LLMs",
+                "Working across multiple annotation platforms",
+                "Gaining insight into LLM behaviour and model quality"
+            ],
+            technologies: ["Outlier", "Mercor", "RWS TrainAI", "DataAnnotation.tech", "LLMs"]
+        },
+        {
+            position: "AI & ML Engineer",
+            company: "Learning & Building",
             period: "2025",
             location: "Bengaluru, Karnataka, India",
-            description: "Developing intelligent AI systems, chatbots, and machine learning solutions. Building next-gen conversational AI agents and JARVIS-like personal assistants.",
+            description: "Exploring LLMs, multi-agent systems and RAG. Building AI-powered projects and evaluating models across annotation platforms.",
             responsibilities: [
-                "Building AI-powered chatbots and conversational agents",
-                "Developing machine learning models with TensorFlow and PyTorch",
-                "Working with LLMs and transformer architectures",
-                "Creating autonomous AI systems and automation tools"
+                "Building AI-powered projects with LLMs",
+                "Exploring multi-agent systems and RAG",
+                "Evaluating models across annotation platforms",
+                "Learning machine learning fundamentals"
             ],
-            technologies: ["Python", "TensorFlow", "PyTorch", "LLMs", "NLP", "AI Agents"]
+            technologies: ["Python", "LLMs", "RAG", "Multi-Agent Systems", "ML"]
         },
         {
-            position: "Full-Stack Developer",
-            company: "Freelance & Projects",
+            position: "The SDE Journey Begins",
+            company: "Self-Taught & Projects",
             period: "2024",
             location: "Bengaluru, Karnataka, India",
-            description: "Built complete web applications from frontend to backend. Developed responsive UIs, RESTful APIs, and database solutions for various clients and projects.",
+            description: "Learned Java, DSA and Python from scratch. Completed virtual internships with JP Morgan Chase and Quantium via Forage.",
             responsibilities: [
-                "Developing full-stack web applications using React and Node.js",
-                "Building RESTful APIs and integrating databases",
-                "Creating responsive and interactive user interfaces",
-                "Deploying and maintaining web applications"
+                "Learning Java and Python from scratch",
+                "Studying data structures and algorithms",
+                "Completing JP Morgan Chase virtual internship",
+                "Completing Quantium virtual internship via Forage"
             ],
-            technologies: ["React", "Node.js", "MongoDB", "Express", "Next.js", "TypeScript"]
-        },
-        {
-            position: "Python Developer",
-            company: "Self-Taught & Projects",
-            period: "2023",
-            location: "Bengaluru, Karnataka, India",
-            description: "Dove deep into Python programming, building automation scripts, bots, and mastering the fundamentals of software development and problem-solving.",
-            responsibilities: [
-                "Learning Python programming and core concepts",
-                "Building automation scripts and Discord bots",
-                "Exploring data structures and algorithms",
-                "Participating in competitive programming"
-            ],
-            technologies: ["Python", "Automation", "Scripting", "Discord.py", "Problem Solving"]
+            technologies: ["Java", "Python", "DSA", "Forage", "JP Morgan", "Quantium"]
         },
         {
             position: "Graphic Designer",
             company: "Freelance",
             period: "2022",
             location: "Bengaluru, Karnataka, India",
-            description: "Started my creative journey as a graphic designer, creating logos, banners, and visual content. This sparked my passion for technology and digital creation.",
+            description: "Created logos, banners and visual content for clients. This creative side later influenced my approach to UI and product design.",
             responsibilities: [
                 "Designing logos and brand identity materials",
-                "Creating social media graphics and banners",
+                "Creating banners and visual content",
                 "Working with clients on creative projects",
-                "Learning design principles and visual aesthetics"
+                "Developing an eye for UI and product design"
             ],
             technologies: ["Photoshop", "Illustrator", "Canva", "Figma", "Visual Design"]
         },
         {
-            position: "Microsoft Office",
-            company: "Begin Learning",
+            position: "Begin Learning",
+            company: "Foundation",
             period: "2021",
             location: "Bengaluru, Karnataka, India",
-            description: "Started my journey into the digital world by learning Microsoft Office tools. This foundational step introduced me to computers and sparked my curiosity for technology.",
+            description: "Started my tech journey from zero — computers, basic tools, and curiosity that led to everything after.",
             responsibilities: [
-                "Learning Microsoft Word, Excel, and PowerPoint",
-                "Creating documents and presentations",
-                "Understanding basic computer operations",
-                "Building foundational digital skills"
+                "Learning basic computer operations",
+                "Understanding digital tools and workflows",
+                "Building foundational tech skills",
+                "Developing curiosity for technology"
             ],
-            technologies: ["MS Word", "MS Excel", "MS PowerPoint", "Computer Basics"]
+            technologies: ["Computer Basics", "Digital Tools", "Self-Learning"]
         }
     ],
     projects: [
@@ -176,10 +176,10 @@ export const config = {
     },
     skills: {
         develop: {
-            title: "AI DEVELOPER",
-            description: "Building intelligent systems & AI solutions",
-            details: "Developing AI agents, chatbots, and machine learning models using Python, TensorFlow, and PyTorch. Specializing in LLMs, NLP, deep learning, and autonomous systems.",
-            tools: ["Python", "TensorFlow", "PyTorch", "OpenCV", "Scikit-learn", "LLMs", "NLP", "Deep Learning", "Chatbots", "AI Agents"]
+            title: "SOFTWARE ENGINEER",
+            description: "Designing robust systems & scalable software",
+            details: "Building reliable, maintainable software through clean architecture, efficient algorithms, and solid engineering practices. Focused on system design, performance optimization, and delivering production-ready applications.",
+            tools: ["Java", "Python", "DSA", "System Design", "OOP"]
         },
         design: {
             title: "FULL-STACK",

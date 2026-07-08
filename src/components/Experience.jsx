@@ -3,40 +3,40 @@ import '../styles/experience.css';
 
 const experiences = [
   {
-    role: 'Learning Something New',
-    type: 'Self-Development',
+    role: 'SDE & Full Stack Developer',
+    type: 'Learning & Building',
     date: 'NOW',
-    description: 'Continuously exploring emerging technologies, researching advanced AI systems, and pushing the boundaries of what\'s possible in tech.',
+    description: 'Grinding DSA and sharpening full-stack skills through real projects. On the path to cracking SDE roles.',
   },
   {
-    role: 'AI Engineer',
-    type: 'Freelance & Projects',
+    role: 'AI Annotator & Evaluator',
+    type: 'Freelance',
+    date: '2026',
+    description: 'Evaluating and annotating AI/ML datasets across Outlier, Mercor, RWS TrainAI and DataAnnotation.tech. Gaining deep insight into LLM behaviour and model quality.',
+  },
+  {
+    role: 'AI & ML Engineer',
+    type: 'Learning & Building',
     date: '2025',
-    description: 'Developing intelligent AI systems, chatbots, and machine learning solutions. Building next-gen conversational AI agents and JARVIS-like personal assistants.',
+    description: 'Exploring LLMs, multi-agent systems and RAG. Building AI-powered projects and evaluating models across annotation platforms.',
   },
   {
-    role: 'Full-Stack Developer',
-    type: 'Freelance & Projects',
-    date: '2024',
-    description: 'Built complete web applications from frontend to backend. Developed responsive UIs, RESTful APIs, and database solutions for various clients and projects.',
-  },
-  {
-    role: 'Python Developer',
+    role: 'The SDE Journey Begins',
     type: 'Self-Taught & Projects',
-    date: '2023',
-    description: 'Dove deep into Python programming, building automation scripts, bots, and mastering the fundamentals of software development and problem-solving.',
+    date: '2024',
+    description: 'Learned Java, DSA and Python from scratch. Completed virtual internships with JP Morgan Chase and Quantium via Forage.',
   },
   {
     role: 'Graphic Designer',
     type: 'Freelance',
     date: '2022',
-    description: 'Started my creative journey as a graphic designer, creating logos, banners, and visual content. This sparked my passion for technology and digital creation.',
+    description: 'Created logos, banners and visual content for clients. This creative side later influenced my approach to UI and product design.',
   },
   {
-    role: 'Microsoft Office',
-    type: 'Begin Learning',
+    role: 'Begin Learning',
+    type: 'Foundation',
     date: '2021',
-    description: 'Started my journey into the digital world by learning Microsoft Office tools. This foundational step introduced me to computers and sparked my curiosity for technology.',
+    description: 'Started my tech journey from zero — computers, basic tools, and curiosity that led to everything after.',
   }
 ];
 

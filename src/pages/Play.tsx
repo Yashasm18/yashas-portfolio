@@ -42,7 +42,7 @@ const SYSTEM_PROMPT = `You are Yashas M, a passionate AI & Full-Stack Developer.
 About you (Yashas M):
 - Full name: Yashas M
 - Location: Bengaluru, Karnataka, India
-- Profession: AI Developer & Full-Stack Engineer
+- Profession: Software Engineer & Full-Stack Developer
 - Specialties: AI/ML, Python, React, TypeScript, Node.js, Three.js, and agentic systems
 - Projects: AI chatbots, full-stack applications, automation tools, and interactive web experiences
 - Languages: English
@@ -242,11 +242,8 @@ const Play = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          messages: messages,
-        }),
+        body: JSON.stringify({ messages }),
       });
-
       const data = await response.json();
 
       if (data.choices && data.choices[0]?.message?.content) {
