@@ -6,7 +6,7 @@ export const config = {
         description: "AI & Full-Stack Developer building intelligent systems and modern web applications. Passionate about machine learning, deep learning, and creating next-gen autonomous agents."
     },
     social: {
-        github: "yashasm1807",
+        github: "Yashasm18",
         email: "yashasm1807@gmail.com",
         location: "Bengaluru, Karnataka, India"
     },

@@ -1,5 +1,5 @@
 import '../styles/footer.css';
-
+import { config } from "../config";
 export default function Footer() {
   return (
     <footer className="footer">
@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="footer-col">
             <div className="footer-group">
               <span className="footer-label">Email</span>
-              <a href="mailto:yashasm1807@gmail.com" className="footer-text">yashasm1807@gmail.com</a>
+              <a href={`mailto:${config.contact.email}`} className="footer-text">{config.contact.email}</a>
             </div>
             <div className="footer-group">
               <span className="footer-label">Location</span>
@@ -25,10 +25,10 @@ export default function Footer() {
           <div className="footer-col">
             <span className="footer-label">Social</span>
             <ul className="footer-social-list">
-              <li><a href="https://github.com/yashasm1807" target="_blank" rel="noreferrer">Github ↗</a></li>
-              <li><a href="https://linkedin.com/in/yashasm1807" target="_blank" rel="noreferrer">Linkedin ↗</a></li>
-              <li><a href="https://x.com/yashasm1807" target="_blank" rel="noreferrer">Twitter ↗</a></li>
-              <li><a href="https://instagram.com/yashasm1807" target="_blank" rel="noreferrer">Instagram ↗</a></li>
+              <li><a href={config.contact.github} target="_blank" rel="noreferrer">Github ↗</a></li>
+              <li><a href={config.contact.linkedin} target="_blank" rel="noreferrer">Linkedin ↗</a></li>
+              <li><a href={config.contact.twitter} target="_blank" rel="noreferrer">Twitter ↗</a></li>
+              <li><a href={config.contact.instagram} target="_blank" rel="noreferrer">Instagram ↗</a></li>
             </ul>
           </div>
 
