@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import GitHubCalendar from 'react-github-calendar';
 import '../styles/proof.css';
 
 const certs = [
@@ -54,14 +55,29 @@ export default function ProofLayer() {
           <div className={`proof-github-card reveal ${visible ? 'visible' : ''} reveal-delay-2`}>
             <h3 className="proof-github-title">GitHub Contributions</h3>
             <p className="proof-github-subtitle">Consistent open-source activity</p>
-            <div className="github-graph-placeholder">
-              <div className="github-mini-graph">
-                {/* Generating random activity boxes for the placeholder */}
-                {Array.from({ length: 154 }).map((_, i) => (
-                  <div key={i} className={`github-cell l${Math.floor(Math.random() * 5)}`} />
-                ))}
-              </div>
-              {/* Note: In a real app, you might use a library like react-github-calendar here */}
+            <div className="github-stats-container" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', margin: '1.5rem 0' }}>
+              <img 
+                src="https://github-stats-extended-henna.vercel.app/api?username=Yashasm18&include_all_commits=true&count_private=true&show_icons=true&hide_border=true&title_color=199CFF&text_color=a3a3a3&icon_color=199CFF&bg_color=00000000&v=6" 
+                alt="GitHub Stats" 
+                style={{ width: '100%', maxWidth: '450px' }}
+              />
+              <img 
+                src="https://github-readme-streak-stats.herokuapp.com/?user=Yashasm18&theme=transparent&hide_border=true&stroke=0000&ring=199CFF&fire=199CFF&currStreakNum=199CFF&sideNums=199CFF&currStreakLabel=a3a3a3&sideLabels=a3a3a3&dates=a3a3a3&v=6" 
+                alt="GitHub Streak" 
+                style={{ width: '100%', maxWidth: '450px' }}
+              />
+            </div>
+            <div className="github-graph-placeholder" style={{ padding: '1rem', overflow: 'hidden', display: 'flex', justifyContent: 'center', width: '100%' }}>
+              <GitHubCalendar 
+                username="Yashasm18" 
+                colorScheme="dark"
+                blockSize={12}
+                blockMargin={4}
+                fontSize={12}
+                theme={{
+                  dark: ['#161b22', '#d946ef', '#c026d3', '#a21caf', '#86198f'],
+                }}
+              />
             </div>
           </div>
           
