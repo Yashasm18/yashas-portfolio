@@ -1,33 +1,61 @@
 .cursor-main {
   --size: 0px;
   position: fixed;
-  top: calc(var(--size) / -2);
-  left: calc(var(--size) / -2);
+  top: 0;
+  left: 0;
   width: var(--size);
   height: var(--size);
-  border-radius: 50px;
+  margin-top: calc(var(--size) / -2);
+  margin-left: calc(var(--size) / -2);
+  border-radius: 50%;
   pointer-events: none;
-  z-index: 99;
+  z-index: 9999;
   background-color: #e6c3ff;
-  box-shadow: 0px 0px 30px 0px rgb(175, 131, 255);
+  box-shadow: 0px 0px 30px 0px rgba(175, 131, 255, 0.8);
   mix-blend-mode: difference;
-  transition: top 0.3s ease-out, left 0.3s ease-out, width 0.3s ease-out,
-    height 0.3s ease-out;
+  opacity: 0;
+
+  /* GPU-accelerated compositing — no layout/paint thrashing */
+  will-change: transform, width, height, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  /* Only transition SIZE and OPACITY changes, NOT position.
+     Position is driven entirely by requestAnimationFrame. */
+  transition: width 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+              height 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 0.25s ease;
 }
+
+/* Hover over social icon strip — morph to a rounded rectangle */
 .cursor-icons {
-  top: 10px;
-  left: 10px;
   height: calc(var(--cursorH) - 20px);
-  transition: all 0.5s ease-out, height 0.5s ease-in-out;
+  border-radius: 25px;
+  transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+              height 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+              border-radius 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 0.25s ease;
 }
+
+/* Shrink to nothing on disabled elements */
 .cursor-disable {
-  --size: 0px;
+  --size: 0px !important;
+  opacity: 0.4;
 }
+
+/* Desktop only — cursor visible at 50px */
 @media only screen and (min-width: 600px) {
   .cursor-main {
     --size: 50px;
   }
   .cursor-disable {
-    --size: 0px;
+    --size: 0px !important;
+  }
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-main {
+    display: none !important;
   }
 }
