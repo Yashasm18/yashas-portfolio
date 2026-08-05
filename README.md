@@ -1,6 +1,6 @@
 <div align="center">
 
-# ✦ Yashas M — Developer Portfolio
+# Yashas M — Developer Portfolio
 
 **A premium, open-source developer portfolio built with React, Three.js, and GSAP.**
 
