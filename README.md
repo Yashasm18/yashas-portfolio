@@ -45,7 +45,7 @@ Most portfolio templates are flat pages with static text. This one isn't.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 yashas-portfolio/
@@ -96,7 +96,7 @@ yashas-portfolio/
 
 ---
 
-## 🚀 Quick Start — Use This Template
+## Quick Start — Use This Template
 
 ### 1. Clone & Install
 
@@ -179,7 +179,7 @@ Or connect your GitHub repo to [vercel.com](https://vercel.com) for automatic de
 
 ---
 
-## 🔒 Security
+## Security
 
 This project follows security best practices out of the box:
 
@@ -193,7 +193,7 @@ This project follows security best practices out of the box:
 
 ---
 
-## 🎨 Customization Guide
+## Customization Guide
 
 ### Colors & Theme
 
@@ -221,7 +221,7 @@ Customize the loading text in `src/components/Loading.jsx`. The loading screen o
 
 ---
 
-## 📦 Available Scripts
+## Available Scripts
 
 | Command | Description |
 |:---|:---|
@@ -246,7 +246,7 @@ Please read [`SECURITY.md`](./SECURITY.md) before contributing.
 
 ---
 
-## 📄 License
+## License
 
 This project is open source under the [MIT License](./LICENSE).
 
@@ -262,7 +262,7 @@ This project is open source under the [MIT License](./LICENSE).
 
 <div align="center">
 
-**Built with 💜 by [Yashas M](https://github.com/Yashasm18)**
+**Built and Engineered by [Yashas M](https://github.com/Yashasm18)**
 
 If this template helped you, consider giving it a ⭐
 
