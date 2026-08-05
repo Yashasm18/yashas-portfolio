@@ -23,6 +23,28 @@ dist-ssr
 *.sln
 *.sw?
 
-# Environment variables
+# Environment variables — NEVER commit real keys
 .env
 .env.local
+.env.production
+.env.staging
+.env.*.local
+
+# Vercel local config
+.vercel
+
+# Agent / AI tool configs
+.claude/
+.gemini/
+
+# Debug / scratch files
+test-*.js
+*.tmp
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Build artifacts
+*.tsbuildinfo
