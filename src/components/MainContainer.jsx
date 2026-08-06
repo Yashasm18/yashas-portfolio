@@ -10,6 +10,7 @@ import WhatIDo from "./WhatIDo";
 import Work from "./Work";
 import TechStackNew from "./TechStackNew";
 import CallToAction from "./CallToAction";
+import GitHubActivity from "./GitHubActivity";
 import setSplitText from "./utils/splitText";
 
 const MainContainer = ({ children }) => {
@@ -42,6 +43,7 @@ const MainContainer = ({ children }) => {
         <Work />
         <TechStackNew />
         <CallToAction />
+        <GitHubActivity />
         <Contact />
       </div>
     </div>
