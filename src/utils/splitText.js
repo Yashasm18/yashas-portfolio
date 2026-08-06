@@ -1,24 +1,19 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { TextSplitter } from "../../utils/textSplitter";
-
-interface ParaElement extends HTMLElement {
-  anim?: gsap.core.Animation;
-  split?: TextSplitter;
-}
+import { TextSplitter } from "./textSplitter";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function setSplitText() {
   ScrollTrigger.config({ ignoreMobileResize: true });
   if (window.innerWidth < 900) return;
-  const paras: NodeListOf<ParaElement> = document.querySelectorAll(".para");
-  const titles: NodeListOf<ParaElement> = document.querySelectorAll(".title");
+  const paras = document.querySelectorAll(".para");
+  const titles = document.querySelectorAll(".title");
 
   const TriggerStart = window.innerWidth <= 1024 ? "top 60%" : "20% 60%";
   const ToggleAction = "play pause resume reverse";
 
-  paras.forEach((para: ParaElement) => {
+  paras.forEach((para) => {
     para.classList.add("visible");
     if (para.anim) {
       para.anim.progress(1).kill();
@@ -47,7 +42,8 @@ export default function setSplitText() {
       }
     );
   });
-  titles.forEach((title: ParaElement) => {
+
+  titles.forEach((title) => {
     if (title.anim) {
       title.anim.progress(1).kill();
       title.split?.revert();
@@ -77,3 +73,4 @@ export default function setSplitText() {
 
   ScrollTrigger.addEventListener("refresh", () => setSplitText());
 }
+

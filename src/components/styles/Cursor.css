@@ -15,41 +15,46 @@
   mix-blend-mode: difference;
   opacity: 0;
 
-  /* GPU-accelerated compositing — no layout/paint thrashing */
-  will-change: transform, width, height, opacity;
+  /* GPU-accelerated compositing */
+  will-change: transform, width, height, margin, border-radius, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 
-  /* Only transition SIZE and OPACITY changes, NOT position.
-     Position is driven entirely by requestAnimationFrame. */
-  transition: width 0.3s cubic-bezier(0.23, 1, 0.32, 1),
-              height 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+  /* Smooth transition for size, margin, and border-radius */
+  transition: width 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+              height 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+              margin 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+              border-radius 0.35s cubic-bezier(0.23, 1, 0.32, 1),
               opacity 0.25s ease;
 }
 
-/* Hover over social icon strip — morph to a rounded rectangle */
+/* Hover over social icon strip — morph to a rounded purple pill behind the icons */
 .cursor-icons {
-  height: calc(var(--cursorH) - 20px);
-  border-radius: 25px;
-  transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1),
-              height 0.4s cubic-bezier(0.23, 1, 0.32, 1),
-              border-radius 0.4s cubic-bezier(0.23, 1, 0.32, 1),
-              opacity 0.25s ease;
+  width: var(--cursorW, 54px) !important;
+  height: var(--cursorH, 240px) !important;
+  margin-left: calc(var(--cursorW, 54px) / -2) !important;
+  margin-top: calc(var(--cursorH, 240px) / -2) !important;
+  border-radius: 28px !important;
+  background-color: #c2a4ff !important;
+  box-shadow: 0px 0px 35px rgba(194, 164, 255, 0.7) !important;
+  mix-blend-mode: normal !important;
+  z-index: 98 !important; /* Positioned directly behind the social icons (z-index: 999) */
 }
 
 /* Shrink to nothing on disabled elements */
 .cursor-disable {
   --size: 0px !important;
-  opacity: 0.4;
+  opacity: 0;
 }
 
-/* Desktop only — cursor visible at 50px */
+/* Desktop only — default cursor visible at 50px */
 @media only screen and (min-width: 600px) {
   .cursor-main {
     --size: 50px;
   }
   .cursor-disable {
     --size: 0px !important;
+    opacity: 0;
   }
 }
 

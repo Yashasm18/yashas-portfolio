@@ -15,15 +15,8 @@
   flex-direction: column;
   gap: 8px;
   z-index: 999;
-  padding: 10px;
-}
-.social-icons:hover {
-  transition: 0.3s;
-  color: var(--backgroundColor);
-}
-.social-icons a:hover {
-  color: var(--backgroundColor);
-  /* transform: scale(1.2); */
+  padding: 14px 12px;
+  border-radius: 28px;
 }
 .social-icons span {
   width: 50px;
@@ -40,8 +33,13 @@
   transform: translate(-50%, -50%);
   display: flex;
   font-size: 23px;
+  color: #ffffff;
   will-change: left, top;
-  transition: transform 0.3s ease-out;
+  transition: color 0.3s ease, transform 0.3s ease-out;
+}
+.social-icons:hover a,
+.social-icons a:hover {
+  color: #0b080c !important;
 }
 .resume-button {
   position: absolute;

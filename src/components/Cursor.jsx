@@ -27,10 +27,11 @@ const Cursor = () => {
         if (element.dataset.cursor === "icons") {
           const rect = element.getBoundingClientRect();
           cursor.classList.add("cursor-icons");
+          cursor.style.setProperty("--cursorW", `${rect.width}px`);
           cursor.style.setProperty("--cursorH", `${rect.height}px`);
-          // Snap cursor to the element position for the icons state
-          cursorPos.current.x = rect.left + 10;
-          cursorPos.current.y = rect.top + 10;
+          // Snap cursor center to the exact center of the icons box
+          cursorPos.current.x = rect.left + rect.width / 2;
+          cursorPos.current.y = rect.top + rect.height / 2;
           hoverLockRef.current = true;
         }
         if (element.dataset.cursor === "disable") {
