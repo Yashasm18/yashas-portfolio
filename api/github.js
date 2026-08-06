@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     if (token) {
       const result = await fetchWithGraphQL(username, token);
       if (result) {
-        res.setHeader('Cache-Control', 's-maxage=1800, stale-while-revalidate=3600');
+        res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
         return res.status(200).json(result);
       }
     }
@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     // ─── Strategy 2: Scrape GitHub's public profile page (Exact HTML Parser) ───
     const result = await fetchFromPublicProfile(username);
     if (result) {
-      res.setHeader('Cache-Control', 's-maxage=1800, stale-while-revalidate=3600');
+      res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
       return res.status(200).json(result);
     }
 
