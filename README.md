@@ -2,9 +2,7 @@
 
 # Yashas M — Developer Portfolio
 
-**A premium, open-source developer portfolio built with React, Three.js, and GSAP.**
-
-*Fork it. Customize it. Make it yours.*
+**A high-performance developer portfolio built with React 19, Three.js, and GSAP.**
 
 [![Live Demo](https://img.shields.io/badge/▶_LIVE_DEMO-yashas--portfolio.vercel.app-blueviolet?style=for-the-badge&logo=vercel)](https://yashas-portfolio-mauve.vercel.app)
 [![CI/CD](https://img.shields.io/github/actions/workflow/status/Yashasm18/yashas-portfolio/ci-cd.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=CI%2FCD)](https://github.com/Yashasm18/yashas-portfolio/actions/workflows/ci-cd.yml)
@@ -17,32 +15,114 @@
 
 ---
 
-## ⚡ Why This Template?
+## Overview
 
-Most portfolio templates are flat pages with static text. This one isn't.
+This repository contains the source code for an interactive 3D developer portfolio. It combines Three.js character animation, GSAP scroll orchestration, a custom GPU-accelerated cursor, and a serverless AI chess playground into a single web application.
 
-- 🎭 **Interactive 3D Character** — A rigged GLB model that reacts to scroll, follows your mouse, and transitions between sections using GSAP ScrollTrigger
-- 🖱️ **Custom Cursor System** — GPU-accelerated lerp cursor with `data-cursor` attribute support, `mix-blend-mode: difference`, and automatic detection of dynamically-loaded elements via MutationObserver
-- 🎬 **Cinematic Loading Sequence** — Percentage-based loader with marquee text, animated reveal, and sessionStorage-backed "show once" logic
-- ♟️ **AI Chess Playground** — Full chess engine (Stockfish WASM) with a Gemini-powered AI commentary chat, proxied through a secure serverless function
-- 🌀 **Scroll-Driven Animations** — Every section entrance, career timeline, and tech stack reveal is orchestrated through GSAP ScrollTrigger with scrub-based parallax
-- 📱 **Fully Responsive** — Graceful degradation: 3D character hides on mobile, touch-optimized scroll, custom cursor disabled on touch devices
+The project is structured as a reusable template. All personal details, project metadata, and social links are managed centrally in `src/config.js` and `.env`, allowing anyone to clone and deploy their own instance without exposing private keys or credentials.
 
 ---
 
-## 🏗️ Tech Stack
+## Key Features
 
-| Layer | Technology | Purpose |
-|:---:|:---|:---|
-| ⚛️ | **React 19** | UI framework with lazy loading & Suspense |
-| 🎨 | **Three.js + R3F** | 3D character rendering (`@react-three/fiber` + `@react-three/drei`) |
-| 🎞️ | **GSAP 3** | Scroll-driven animations, timeline orchestration, and text splitting |
-| 🌊 | **Lenis** | Butter-smooth scroll with momentum |
-| ⚡ | **Vite 8** | Lightning-fast HMR, build, and dev server |
-| 🧹 | **OxLint** | Rust-powered linting (React hooks rules enforced) |
-| 🚀 | **Vercel** | Edge deployment with serverless API functions |
-| 🤖 | **Gemini API** | AI chat in the chess playground (server-side proxied) |
-| ♟️ | **Stockfish WASM** | Client-side chess engine |
+- **Interactive 3D Character**: Rigged GLB model reacting to scroll position and mouse movement using GSAP ScrollTrigger and Three.js keyframe animations.
+- **Custom Cursor System**: GPU-accelerated interpolation cursor with `data-cursor` attribute support, `mix-blend-mode` difference blending, and MutationObserver DOM re-binding.
+- **Cinematic Loader**: Percentage-based initial loading sequence with session-backed storage to prevent repetitive loads.
+- **AI Chess Playground**: WebAssembly-powered Stockfish engine paired with a serverless Gemini AI commentary assistant.
+- **Scroll Orchestration**: Hardware-accelerated entrance and timeline animations powered by GSAP and smooth momentum scrolling via Lenis.
+- **Responsive Architecture**: Automatic layout degradation for mobile devices, touch optimization, and conditional 3D model rendering.
+
+---
+
+## Tech Stack
+
+| Category | Technology | Purpose |
+|:---|:---|:---|
+| Frontend | React 19 | Core UI component hierarchy with Suspense lazy-loading |
+| 3D Graphics | Three.js / React Three Fiber | Real-time WebGL rendering (`@react-three/fiber`, `@react-three/drei`) |
+| Animations | GSAP 3 | Timeline orchestration, text splitting, and ScrollTrigger |
+| Smooth Scroll | Lenis | Smooth momentum-based viewport scrolling |
+| Build Tool | Vite 8 | Development HMR and optimized production bundling |
+| Linting | OxLint | Rust-based static analysis and linting |
+| Hosting & Edge | Vercel | Production distribution and serverless API endpoints |
+| AI Integration | Gemini API | Server-proxied chess analysis function |
+| Chess Engine | Stockfish WebAssembly | Client-side move calculation engine |
+
+---
+
+## Security & Repository Isolation
+
+This codebase enforces strict security isolation. Anyone cloning or forking this repository receives a clean template with zero exposed secrets or personal API tokens:
+
+- **No Hardcoded Secrets**: All API keys and access tokens are managed strictly through environment variables.
+- **Serverless API Protection**: External endpoints (Gemini AI chat, GitHub contribution graph) route requests through Vercel serverless functions in `/api/`.
+- **Clean Clone Guarantee**: Cloning this repository contains no personal authentication tokens or private endpoints.
+- **Configurable Placeholders**: All personal metadata is contained inside `src/config.js` and `.env.example`.
+
+For detailed security guidelines and vulnerability reporting, see [SECURITY.md](./SECURITY.md).
+
+---
+
+## Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Yashasm18/yashas-portfolio.git
+cd yashas-portfolio
+npm install
+```
+
+### 2. Configure Environment Variables
+
+Copy `.env.example` to create your local `.env` file:
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and fill in your credentials:
+
+```env
+# Gemini API Key (Optional — used for /play chess commentary)
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
+
+# GitHub Personal Access Token (Optional — used for live contribution graph)
+GITHUB_TOKEN=your_github_token_here
+
+# Your GitHub Username
+GITHUB_USERNAME=your_github_username
+```
+
+### 3. Update Personal Data
+
+Modify `src/config.js` to customize your portfolio details:
+
+```js
+export const config = {
+  developer: {
+    name: "Your Name",
+    fullName: "Your Full Name",
+    title: "Your Title",
+    description: "Your bio summary..."
+  },
+  social: {
+    github: "your-username",
+    email: "email@example.com",
+    location: "City, Country"
+  },
+  experiences: [ /* Your career milestones */ ],
+  projects: [ /* Your project cards */ ]
+};
+```
+
+### 4. Run Development Server
+
+```bash
+npm run dev
+```
+
+Open `http://localhost:5173` in your browser.
 
 ---
 
@@ -51,222 +131,56 @@ Most portfolio templates are flat pages with static text. This one isn't.
 ```
 yashas-portfolio/
 ├── api/
-│   └── chat.js               # Vercel serverless function (Gemini proxy)
+│   ├── chat.js               # Gemini AI proxy serverless function
+│   └── github.js             # GitHub contribution API proxy
 ├── public/
-│   ├── models/
-│   │   └── character.glb      # 3D avatar model (rigged, animated)
-│   ├── images/                # Project screenshots & tech logos
-│   ├── video/                 # Background video assets
-│   ├── draco/                 # Draco mesh compression decoder
-│   └── redoxchess.wasm        # Stockfish chess engine (WebAssembly)
+│   ├── models/               # 3D GLB character model
+│   ├── images/               # Project screenshots and assets
+│   └── redoxchess.wasm       # Stockfish WebAssembly engine
 ├── src/
-│   ├── components/
-│   │   ├── Scene.jsx          # Three.js canvas, camera, lighting
-│   │   ├── Avatar.jsx         # 3D character controller & mouse tracking
-│   │   ├── Cursor.jsx         # Custom GPU-accelerated cursor
-│   │   ├── Loading.jsx        # Cinematic loading screen
-│   │   ├── Landing.jsx        # Hero section with parallax text
-│   │   ├── About.jsx          # About me section
-│   │   ├── WhatIDo.jsx        # Skills showcase with 3D integration
-│   │   ├── Career.jsx         # Animated career timeline
-│   │   ├── TechStackNew.jsx   # Tech stack grid with hover effects
-│   │   ├── Work.jsx           # Project cards with image reveals
-│   │   ├── Contact.jsx        # Contact form & social links
-│   │   ├── Navbar.jsx         # Sticky navigation bar
-│   │   ├── SocialIcons.jsx    # Floating social sidebar
-│   │   └── MainContainer.jsx  # Layout orchestrator
-│   ├── pages/
-│   │   ├── Play.tsx           # AI Chess playground
-│   │   └── MyWorks.tsx        # Full project gallery
-│   ├── utils/
-│   │   ├── GsapScroll.js      # All GSAP ScrollTrigger timelines
-│   │   ├── character.js       # Character loading & bone setup
-│   │   ├── lighting.js        # Three.js scene lighting
-│   │   ├── mouseUtils.js      # Mouse-follow camera calculations
-│   │   └── textSplitter.js    # Text split animation utilities
-│   ├── context/
-│   │   └── LoadingProvider.jsx # Global loading state
-│   ├── config.js              # ⬅️ YOUR DATA GOES HERE
-│   ├── App.jsx                # Router & lazy-loaded pages
-│   └── index.css              # Global styles & CSS variables
-├── .env.example               # Environment variable template
-├── vercel.json                # Deployment config + security headers
-├── vite.config.js             # Vite config + Gemini dev proxy
+│   ├── components/           # React UI and 3D canvas components
+│   ├── pages/                # Page routes (/play, /works)
+│   ├── utils/                # GSAP scroll and animation handlers
+│   ├── config.js             # Central configuration file
+│   └── index.css             # Global CSS variables and styles
+├── .env.example              # Environment template
+├── vercel.json               # Vercel deployment and security headers
 └── package.json
 ```
 
 ---
 
-## Quick Start — Use This Template
+## Build and Deployment
 
-### 1. Clone & Install
-
-```bash
-git clone https://github.com/Yashasm18/yashas-portfolio.git my-portfolio
-cd my-portfolio
-npm install
-```
-
-### 2. Configure Your Data
-
-Open **`src/config.js`** — this single file controls your entire portfolio:
-
-```js
-export const config = {
-  developer: {
-    name: "Your Name",
-    fullName: "Your Full Name",
-    title: "Your Title",
-    description: "Your bio..."
-  },
-  social: {
-    github: "your-github-username",
-    email: "you@email.com",
-    location: "Your City, Country"
-  },
-  contact: {
-    email: "you@email.com",
-    github: "https://github.com/you",
-    linkedin: "https://linkedin.com/in/you",
-    twitter: "https://x.com/you",
-    instagram: "https://instagram.com/you"
-  },
-  experiences: [ /* your career timeline */ ],
-  projects: [ /* your project cards */ ],
-  skills: { /* your skill categories */ }
-};
-```
-
-### 3. Swap the 3D Avatar (Optional)
-
-Replace `public/models/character.glb` with your own rigged GLB model. The character needs these bone names for scroll animations to work:
-
-- `spine005` — neck bone for head tilt
-- `Plane004` — monitor mesh for screen glow effect
-
-> **Tip:** Use [Ready Player Me](https://readyplayer.me) to generate a free 3D avatar, then rig it in Blender.
-
-### 4. Set Up Environment Variables
+### Production Build
 
 ```bash
-cp .env.example .env
+npm run build
 ```
 
-Edit `.env` and add your Gemini API key (free from [Google AI Studio](https://aistudio.google.com/)):
+The output bundle will be generated in the `dist/` directory.
 
-```env
-VITE_GEMINI_API_KEY=your_key_here
-```
-
-> This key is only used for the `/play` chess AI chat feature. The portfolio works perfectly without it.
-
-### 5. Run Locally
+### Deploying to Vercel
 
 ```bash
-npm run dev
+npx vercel
 ```
 
-Open [http://localhost:5173](http://localhost:5173) — you're live! 🎉
-
-### 6. Deploy to Vercel
-
-```bash
-npx -y vercel
-```
-
-Or connect your GitHub repo to [vercel.com](https://vercel.com) for automatic deployments on every push.
-
-> **Important:** Add your `VITE_GEMINI_API_KEY` in **Vercel → Project → Settings → Environment Variables** for the chess AI chat to work in production.
-
----
-
-## Security
-
-This project follows security best practices out of the box:
-
-| Measure | Implementation |
-|:---|:---|
-| **API Key Protection** | Keys stored in `.env` (gitignored), proxied through Vercel serverless functions — never exposed to the client |
-| **Security Headers** | `X-Content-Type-Options`, `X-Frame-Options`, `X-XSS-Protection`, `Referrer-Policy`, `Permissions-Policy` configured in `vercel.json` |
-| **Input Sanitization** | Chat API validates request method, checks for missing keys, and wraps all responses in try/catch |
-| **Asset Caching** | Immutable cache headers on hashed assets, 7-day cache on 3D models |
-| **Responsible Disclosure** | See [`SECURITY.md`](./SECURITY.md) for how to report vulnerabilities |
-
----
-
-## Customization Guide
-
-### Colors & Theme
-
-Edit the CSS variables in `src/index.css`:
-
-```css
-:root {
-  --accentColor: #c2a4ff;        /* Purple accent — change to your brand color */
-  --backgroundColor: #0b080c;    /* Dark background */
-  color: #eae5ec;                 /* Light text */
-}
-```
-
-### Sections
-
-Each section is a standalone component in `src/components/`. To remove a section, simply delete its import and JSX line from `MainContainer.jsx`.
-
-### Animations
-
-All scroll-triggered animations live in `src/utils/GsapScroll.js`. Tweak `scrub`, `start`, `end`, and `duration` values to adjust timing.
-
-### Loading Screen
-
-Customize the loading text in `src/components/Loading.jsx`. The loading screen only appears on the first visit (controlled by `sessionStorage`).
+Alternatively, connect your repository to Vercel for automated CI/CD deployments on push. Ensure you configure your environment variables (`VITE_GEMINI_API_KEY`, `GITHUB_TOKEN`, `GITHUB_USERNAME`) in your Vercel Project Settings.
 
 ---
 
 ## Available Scripts
 
-| Command | Description |
+| Command | Action |
 |:---|:---|
-| `npm run dev` | Start development server with HMR |
-| `npm run build` | Production build to `dist/` |
-| `npm run preview` | Preview production build locally |
-| `npm run lint` | Run OxLint for code quality checks |
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Whether it's a bug fix, new feature, or design improvement:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feat/amazing-feature`)
-3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
-4. Push to the branch (`git push origin feat/amazing-feature`)
-5. Open a Pull Request
-
-Please read [`SECURITY.md`](./SECURITY.md) before contributing.
+| `npm run dev` | Starts local development server |
+| `npm run build` | Builds production bundle |
+| `npm run preview` | Previews production build locally |
+| `npm run lint` | Runs OxLint static analysis |
 
 ---
 
 ## License
 
-This project is open source under the [MIT License](./LICENSE).
-
-**You are free to:**
-- ✅ Use it as your own portfolio
-- ✅ Modify it however you want
-- ✅ Deploy it anywhere
-- ✅ Use it commercially
-
-**Just keep the MIT license notice** and give credit if you'd like — it's appreciated but not required.
-
----
-
-<div align="center">
-
-**Built and Engineered by [Yashas M](https://github.com/Yashasm18)**
-
-If this template helped you, consider giving it a ⭐
-
-[![GitHub Stars](https://img.shields.io/github/stars/Yashasm18/yashas-portfolio?style=social)](https://github.com/Yashasm18/yashas-portfolio)
-
-</div>
+This project is open source and available under the [MIT License](./LICENSE).
