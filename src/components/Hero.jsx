@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import '../styles/hero.css';
 
 export default function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });

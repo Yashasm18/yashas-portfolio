@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import GitHubCalendar from 'react-github-calendar';
-import '../styles/proof.css';
 
 const certs = [
   {

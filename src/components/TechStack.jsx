@@ -1,5 +1,3 @@
-import '../styles/techstack.css';
-
 const techs = [
   { name: 'Python', icon: 'python' },
   { name: 'JavaScript', icon: 'js' },

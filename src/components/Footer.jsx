@@ -1,4 +1,3 @@
-import '../styles/footer.css';
 import { config } from "../config";
 export default function Footer() {
   return (

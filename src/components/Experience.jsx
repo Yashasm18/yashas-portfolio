@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import '../styles/experience.css';
 
 const experiences = [
   {

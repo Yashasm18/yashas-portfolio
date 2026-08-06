@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import '../styles/loader.css';
 
 export default function Loader({ onComplete }) {
   const [hidden, setHidden] = useState(false);

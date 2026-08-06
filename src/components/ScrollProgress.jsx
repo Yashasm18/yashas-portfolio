@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import '../styles/scrollprogress.css';
 
 export default function ScrollProgress() {
   const barRef = useRef(null);
