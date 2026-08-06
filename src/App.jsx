@@ -9,6 +9,10 @@ const MainContainer = lazy(() => import("./components/MainContainer"));
 const MyWorks = lazy(() => import("./pages/MyWorks"));
 const Play = lazy(() => import("./pages/Play"));
 
+const DarkFallback = () => (
+  <div style={{ backgroundColor: "#0b080c", minHeight: "100vh", width: "100%" }} />
+);
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -17,9 +21,9 @@ const App = () => {
           path="/"
           element={
             <LoadingProvider>
-              <Suspense>
+              <Suspense fallback={<DarkFallback />}>
                 <MainContainer>
-                  <Suspense>
+                  <Suspense fallback={null}>
                     <Scene />
                   </Suspense>
                 </MainContainer>
@@ -30,7 +34,7 @@ const App = () => {
         <Route
           path="/myworks"
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<DarkFallback />}>
               <MyWorks />
             </Suspense>
           }
@@ -38,7 +42,7 @@ const App = () => {
         <Route
           path="/play"
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<DarkFallback />}>
               <Play />
             </Suspense>
           }

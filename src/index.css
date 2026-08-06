@@ -86,15 +86,23 @@ main {
   }
 }
 
+html,
+body,
+#root {
+  background-color: #0b080c !important;
+  color: #eae5ec;
+}
+
 body {
   margin: 0;
   height: auto;
-  background-color: #000;
+  background-color: #0b080c !important;
   flex-grow: 1;
   --cWidth: calc(100% - 30px);
   --cMaxWidth: 1920px;
   max-width: 100vw;
   overflow-x: hidden;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
