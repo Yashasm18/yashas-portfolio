@@ -7,6 +7,7 @@
 *Fork it. Customize it. Make it yours.*
 
 [![Live Demo](https://img.shields.io/badge/▶_LIVE_DEMO-yashas--portfolio.vercel.app-blueviolet?style=for-the-badge&logo=vercel)](https://yashas-portfolio-mauve.vercel.app)
+[![CI/CD Pipeline](https://github.com/Yashasm18/yashas-portfolio/actions/workflows/ci-cd.yml/badge.svg?style=for-the-badge)](https://github.com/Yashasm18/yashas-portfolio/actions/workflows/ci-cd.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](./LICENSE)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev)
 [![Three.js](https://img.shields.io/badge/Three.js-0.168-black?style=for-the-badge&logo=threedotjs)](https://threejs.org)

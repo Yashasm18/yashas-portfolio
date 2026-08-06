@@ -26,9 +26,13 @@ const Cursor = () => {
       const onEnter = () => {
         if (element.dataset.cursor === "icons") {
           const rect = element.getBoundingClientRect();
+          const paddingX = 16;
+          const paddingY = 16;
+          const w = rect.width + paddingX;
+          const h = rect.height + paddingY;
           cursor.classList.add("cursor-icons");
-          cursor.style.setProperty("--cursorW", `${rect.width}px`);
-          cursor.style.setProperty("--cursorH", `${rect.height}px`);
+          cursor.style.setProperty("--cursorW", `${w}px`);
+          cursor.style.setProperty("--cursorH", `${h}px`);
           // Snap cursor center to the exact center of the icons box
           cursorPos.current.x = rect.left + rect.width / 2;
           cursorPos.current.y = rect.top + rect.height / 2;

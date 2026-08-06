@@ -28,17 +28,18 @@
               opacity 0.25s ease;
 }
 
-/* Hover over social icon strip — morph to a rounded purple pill behind the icons */
+/* Hover over social icon strip — morph to a rounded purple pill wrapping the icons */
 .cursor-icons {
-  width: var(--cursorW, 54px) !important;
-  height: var(--cursorH, 240px) !important;
-  margin-left: calc(var(--cursorW, 54px) / -2) !important;
-  margin-top: calc(var(--cursorH, 240px) / -2) !important;
-  border-radius: 28px !important;
+  width: var(--cursorW, 60px) !important;
+  height: var(--cursorH, 250px) !important;
+  margin-left: calc(var(--cursorW, 60px) / -2) !important;
+  margin-top: calc(var(--cursorH, 250px) / -2) !important;
+  border-radius: 32px !important;
   background-color: #c2a4ff !important;
-  box-shadow: 0px 0px 35px rgba(194, 164, 255, 0.7) !important;
-  mix-blend-mode: normal !important;
-  z-index: 98 !important; /* Positioned directly behind the social icons (z-index: 999) */
+  box-shadow: 0 0 40px rgba(194, 164, 255, 0.8), 0 0 80px rgba(194, 164, 255, 0.4) !important;
+  mix-blend-mode: difference !important;
+  z-index: 10000 !important;
+  pointer-events: none !important;
 }
 
 /* Shrink to nothing on disabled elements */
