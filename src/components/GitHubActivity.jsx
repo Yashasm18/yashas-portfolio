@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const DAYS = ["", "Mon", "", "Wed", "", "Fri", ""];
 
-// Map GitHub's default green colors to our purple palette
+// Map contribution count to our purple palette
 function mapColor(count) {
   if (count === 0) return "var(--gh-level-0)";
   if (count <= 2) return "var(--gh-level-1)";
@@ -21,26 +21,37 @@ function mapColor(count) {
 const GitHubActivity = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const sectionRef = useRef(null);
   const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, text: "" });
 
-  // Fetch contribution data
+  // Fetch contribution data with timeout
   useEffect(() => {
     let cancelled = false;
 
     async function fetchData() {
       try {
-        const res = await fetch("/api/github");
-        if (!res.ok) throw new Error("Failed to fetch");
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+
+        const res = await fetch("/api/github", { signal: controller.signal });
+        clearTimeout(timeoutId);
+
+        if (!res.ok) throw new Error("API error");
         const json = await res.json();
+
+        if (json.error) throw new Error(json.error);
+        if (!json.calendar?.weeks?.length) throw new Error("No data");
+
         if (!cancelled) {
           setData(json);
           setLoading(false);
+          setError(false);
         }
       } catch (err) {
         if (!cancelled) {
-          setError(err.message);
+          console.warn("GitHub activity fetch failed:", err.message);
+          setError(true);
           setLoading(false);
         }
       }
@@ -57,7 +68,7 @@ const GitHubActivity = () => {
 
   // GSAP scroll-triggered entrance animation
   useEffect(() => {
-    if (loading || error) return;
+    if (loading || error || !data) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -98,7 +109,7 @@ const GitHubActivity = () => {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [loading, error]);
+  }, [loading, error, data]);
 
   // Extract month labels from the calendar weeks
   const monthLabels = useMemo(() => {
@@ -125,7 +136,7 @@ const GitHubActivity = () => {
     const parentRect = sectionRef.current?.getBoundingClientRect();
     if (!parentRect) return;
 
-    const date = new Date(day.date);
+    const date = new Date(day.date + "T00:00:00");
     const formatted = date.toLocaleDateString("en-US", {
       weekday: "short",
       month: "short",
@@ -142,9 +153,15 @@ const GitHubActivity = () => {
   }
 
   function handleCellLeave() {
-    setTooltip({ visible: false, x: 0, y: 0, text: "" });
+    setTooltip((prev) => ({ ...prev, visible: false }));
   }
 
+  // ─── Render nothing if error or no data (zero height, no blank space) ───
+  if (error || (!loading && !data)) {
+    return null;
+  }
+
+  // ─── Loading skeleton ───
   if (loading) {
     return (
       <div className="github-activity-section section-container" ref={sectionRef}>
@@ -157,10 +174,6 @@ const GitHubActivity = () => {
         </div>
       </div>
     );
-  }
-
-  if (error) {
-    return null; // Silently hide if API fails — don't break the portfolio
   }
 
   const weeks = data.calendar?.weeks || [];
