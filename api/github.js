@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   const username = process.env.GITHUB_USERNAME || 'Yashasm18';
 
   try {
-    // ─── Strategy 1: Use GITHUB_TOKEN if available (full GraphQL data) ───
+    // ─── Strategy 1: Use GITHUB_TOKEN if available (GraphQL) ───
     const token = process.env.GITHUB_TOKEN;
     if (token) {
       const result = await fetchWithGraphQL(username, token);
@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       }
     }
 
-    // ─── Strategy 2: Scrape GitHub's public profile page (no token needed) ───
+    // ─── Strategy 2: Scrape GitHub's public profile page (Exact HTML Parser) ───
     const result = await fetchFromPublicProfile(username);
     if (result) {
       res.setHeader('Cache-Control', 's-maxage=1800, stale-while-revalidate=3600');
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
   }
 }
 
-// ─── GraphQL approach (requires token) ───
+// ─── GraphQL approach ───
 async function fetchWithGraphQL(username, token) {
   try {
     const now = new Date();
@@ -87,14 +87,13 @@ async function fetchWithGraphQL(username, token) {
   }
 }
 
-// ─── Public profile scraping approach (no token needed) ───
+// ─── Exact Public Profile HTML Parser ───
 async function fetchFromPublicProfile(username) {
   try {
-    // GitHub serves the contribution calendar as an HTML fragment
     const url = `https://github.com/users/${username}/contributions`;
     const response = await fetch(url, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; yashas-portfolio/1.0)',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept': 'text/html',
       },
     });
@@ -102,70 +101,77 @@ async function fetchFromPublicProfile(username) {
     if (!response.ok) return null;
     const html = await response.text();
 
-    // Parse contribution data from the HTML using regex
-    // Each day is a <td> with data-date and data-level attributes
-    const dayRegex = /data-date="([^"]+)"[^>]*data-level="([^"]+)"/g;
-    const weeks = [];
-    let currentWeek = [];
-    let totalContributions = 0;
-    let match;
-    const allDays = [];
+    const daysByDate = {};
 
-    while ((match = dayRegex.exec(html)) !== null) {
+    // Exact match for <td ... data-date="YYYY-MM-DD" ... data-level="L"> followed by <tool-tip>text</tool-tip>
+    const cellRegex = /<td[^>]*data-date="(\d{4}-\d{2}-\d{2})"[^>]*data-level="(\d+)"[^>]*>[\s\S]*?<tool-tip[^>]*>([\s\S]*?)<\/tool-tip>/g;
+
+    let match;
+    while ((match = cellRegex.exec(html)) !== null) {
       const date = match[1];
       const level = parseInt(match[2], 10);
+      const tipText = match[3].trim();
 
-      // Estimate contribution count from level
-      const countMap = { 0: 0, 1: 1, 2: 3, 3: 6, 4: 10 };
-      const contributionCount = countMap[level] ?? 0;
+      let count = 0;
+      const countMatch = tipText.match(/^([\d,]+)\s+contribution/i);
+      if (countMatch) {
+        count = parseInt(countMatch[1].replace(/,/g, ''), 10);
+      }
 
-      // Also try to extract the actual count from the tooltip
-      // Look backwards in the html for a count near this date
-      const countRegex = new RegExp(`(\\d+) contributions? on`);
-      const nearbyHtml = html.substring(Math.max(0, match.index - 200), match.index + match[0].length);
-      const countMatch = countRegex.exec(nearbyHtml);
-      const actualCount = countMatch ? parseInt(countMatch[1], 10) : contributionCount;
+      daysByDate[date] = { date, level, count };
+    }
 
-      const dayData = {
-        date,
-        contributionCount: actualCount,
-        weekday: new Date(date).getDay(),
-        color: levelToColor(level),
-      };
+    const dates = Object.keys(daysByDate).sort();
+    if (dates.length === 0) return null;
 
-      allDays.push(dayData);
-      totalContributions += actualCount;
-      currentWeek.push(dayData);
+    // Total contributions from page heading or summed
+    let totalContributions = dates.reduce((sum, d) => sum + daysByDate[d].count, 0);
+    const totalHeadingMatch = html.match(/(\d[\d,]*)\s+contributions?\s+in\s+the\s+last\s+year/i);
+    if (totalHeadingMatch) {
+      totalContributions = parseInt(totalHeadingMatch[1].replace(/,/g, ''), 10);
+    }
 
-      if (currentWeek.length === 7) {
+    // Group chronologically into Sunday-Saturday weeks
+    const weeks = [];
+    let currentWeek = [];
+
+    for (const date of dates) {
+      const d = new Date(date + 'T00:00:00Z');
+      const dayOfWeek = d.getUTCDay(); // 0 = Sunday
+
+      if (dayOfWeek === 0 && currentWeek.length > 0) {
         weeks.push({ contributionDays: currentWeek });
         currentWeek = [];
       }
+
+      currentWeek.push({
+        date,
+        contributionCount: daysByDate[date].count,
+        weekday: dayOfWeek,
+        color: levelToColor(daysByDate[date].level),
+      });
     }
 
-    // Push any remaining partial week
     if (currentWeek.length > 0) {
       weeks.push({ contributionDays: currentWeek });
     }
 
-    if (weeks.length === 0) return null;
-
-    // Also try to get total from the page heading
-    const totalRegex = /(\d[\d,]*)\s+contributions?\s+in\s+the\s+last\s+year/i;
-    const totalMatch = totalRegex.exec(html);
-    if (totalMatch) {
-      totalContributions = parseInt(totalMatch[1].replace(/,/g, ''), 10);
-    }
-
     const calendar = { totalContributions, weeks };
     return buildResponse(calendar, totalContributions);
-  } catch {
+  } catch (err) {
+    console.error('Public profile scraping failed:', err);
     return null;
   }
 }
 
 function levelToColor(level) {
-  const colors = ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'];
+  const colors = [
+    'rgba(255, 255, 255, 0.04)', // level 0
+    'rgba(162, 120, 255, 0.35)', // level 1
+    'rgba(162, 120, 255, 0.60)', // level 2
+    'rgba(174, 138, 255, 0.85)', // level 3
+    '#c2a4ff',                  // level 4
+  ];
   return colors[level] || colors[0];
 }
 
@@ -174,24 +180,33 @@ function buildResponse(calendar, totalContributions) {
     .flatMap(w => w.contributionDays)
     .sort((a, b) => new Date(b.date) - new Date(a.date)); // newest first
 
+  const dates = allDays.map(d => d.date).sort();
+
   // Current streak
   let currentStreak = 0;
-  const today = new Date().toISOString().split('T')[0];
+  const todayStr = new Date().toISOString().split('T')[0];
+
   let startIdx = 0;
-  if (allDays[0]?.date === today && allDays[0]?.contributionCount === 0) {
+  // If today has 0 contributions so far, check starting from yesterday
+  if (allDays[0]?.date === todayStr && allDays[0]?.contributionCount === 0) {
     startIdx = 1;
   }
+
   for (let i = startIdx; i < allDays.length; i++) {
-    if (allDays[i].contributionCount > 0) currentStreak++;
-    else break;
+    if (allDays[i].contributionCount > 0) {
+      currentStreak++;
+    } else {
+      break;
+    }
   }
 
   // Longest streak
   let longestStreak = 0;
   let tempStreak = 0;
-  const chronological = [...allDays].reverse();
-  for (const day of chronological) {
-    if (day.contributionCount > 0) {
+
+  for (const dateStr of dates) {
+    const dayObj = allDays.find(d => d.date === dateStr);
+    if (dayObj && dayObj.contributionCount > 0) {
       tempStreak++;
       longestStreak = Math.max(longestStreak, tempStreak);
     } else {

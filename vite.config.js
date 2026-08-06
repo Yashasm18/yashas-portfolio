@@ -150,40 +150,87 @@ async function fetchGraphQL(username, token) {
 async function fetchPublicProfile(username) {
   try {
     const resp = await fetch(`https://github.com/users/${username}/contributions`, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; portfolio/1.0)', 'Accept': 'text/html' },
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'Accept': 'text/html',
+      },
     });
     if (!resp.ok) return null;
     const html = await resp.text();
-    const dayRegex = /data-date="([^"]+)"[^>]*data-level="([^"]+)"/g;
-    const weeks = [];
-    let currentWeek = [];
-    let total = 0;
+
+    const daysByDate = {};
+    const cellRegex = /<td[^>]*data-date="(\d{4}-\d{2}-\d{2})"[^>]*data-level="(\d+)"[^>]*>[\s\S]*?<tool-tip[^>]*>([\s\S]*?)<\/tool-tip>/g;
+
     let match;
-    const countMap = { 0: 0, 1: 1, 2: 3, 3: 6, 4: 10 };
-    while ((match = dayRegex.exec(html)) !== null) {
-      const count = countMap[parseInt(match[2], 10)] ?? 0;
-      const day = { date: match[1], contributionCount: count, weekday: new Date(match[1]).getDay(), color: '#161b22' };
-      total += count;
-      currentWeek.push(day);
-      if (currentWeek.length === 7) { weeks.push({ contributionDays: currentWeek }); currentWeek = []; }
+    while ((match = cellRegex.exec(html)) !== null) {
+      const date = match[1];
+      const level = parseInt(match[2], 10);
+      const tipText = match[3].trim();
+      let count = 0;
+      const countMatch = tipText.match(/^([\d,]+)\s+contribution/i);
+      if (countMatch) {
+        count = parseInt(countMatch[1].replace(/,/g, ''), 10);
+      }
+      daysByDate[date] = { date, level, count };
     }
-    if (currentWeek.length > 0) weeks.push({ contributionDays: currentWeek });
-    if (weeks.length === 0) return null;
+
+    const dates = Object.keys(daysByDate).sort();
+    if (dates.length === 0) return null;
+
+    let total = dates.reduce((sum, d) => sum + daysByDate[d].count, 0);
     const totalMatch = /(\d[\d,]*)\s+contributions?\s+in\s+the\s+last\s+year/i.exec(html);
     if (totalMatch) total = parseInt(totalMatch[1].replace(/,/g, ''), 10);
+
+    const weeks = [];
+    let currentWeek = [];
+
+    for (const date of dates) {
+      const d = new Date(date + 'T00:00:00Z');
+      const dayOfWeek = d.getUTCDay();
+      if (dayOfWeek === 0 && currentWeek.length > 0) {
+        weeks.push({ contributionDays: currentWeek });
+        currentWeek = [];
+      }
+      currentWeek.push({
+        date,
+        contributionCount: daysByDate[date].count,
+        weekday: dayOfWeek,
+        color: levelToColor(daysByDate[date].level),
+      });
+    }
+    if (currentWeek.length > 0) weeks.push({ contributionDays: currentWeek });
+
     return buildStreaks({ totalContributions: total, weeks }, total);
   } catch { return null; }
 }
 
+function levelToColor(level) {
+  const colors = ['rgba(255, 255, 255, 0.04)', 'rgba(162, 120, 255, 0.35)', 'rgba(162, 120, 255, 0.60)', 'rgba(174, 138, 255, 0.85)', '#c2a4ff'];
+  return colors[level] || colors[0];
+}
+
 function buildStreaks(calendar, totalContributions) {
   const allDays = calendar.weeks.flatMap(w => w.contributionDays).sort((a, b) => new Date(b.date) - new Date(a.date));
+  const dates = allDays.map(d => d.date).sort();
   let currentStreak = 0, longestStreak = 0, tempStreak = 0;
-  const today = new Date().toISOString().split('T')[0];
-  let start = (allDays[0]?.date === today && allDays[0]?.contributionCount === 0) ? 1 : 0;
-  for (let i = start; i < allDays.length; i++) { if (allDays[i].contributionCount > 0) currentStreak++; else break; }
-  for (const day of [...allDays].reverse()) { if (day.contributionCount > 0) { tempStreak++; longestStreak = Math.max(longestStreak, tempStreak); } else tempStreak = 0; }
+  const todayStr = new Date().toISOString().split('T')[0];
+  let start = (allDays[0]?.date === todayStr && allDays[0]?.contributionCount === 0) ? 1 : 0;
+  for (let i = start; i < allDays.length; i++) {
+    if (allDays[i].contributionCount > 0) currentStreak++;
+    else break;
+  }
+  for (const dateStr of dates) {
+    const dayObj = allDays.find(d => d.date === dateStr);
+    if (dayObj && dayObj.contributionCount > 0) {
+      tempStreak++;
+      longestStreak = Math.max(longestStreak, tempStreak);
+    } else {
+      tempStreak = 0;
+    }
+  }
   return { totalContributions, currentStreak, longestStreak, calendar };
 }
+
 
 
 // https://vite.dev/config/
