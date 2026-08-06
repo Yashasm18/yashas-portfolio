@@ -106,64 +106,64 @@ export const config = {
             title: "Project 01",
             category: "AI / Software",
             technologies: "Python, React, APIs, Automation",
-            image: "/images/placeholder.webp",
-            description: "A placeholder project card for one of my upcoming software and AI builds."
+            image: "/images/project-1.webp",
+            description: "An AI-driven software platform with automated workflows and modern web frontend."
         },
         {
             id: 2,
             title: "Project 02",
             category: "Full Stack",
             technologies: "React, Node.js, Database, REST APIs",
-            image: "/images/placeholder.webp",
-            description: "A placeholder project card for a full-stack web application."
+            image: "/images/project-2.webp",
+            description: "Full-stack application with real-time data sync and modular backend design."
         },
         {
             id: 3,
             title: "Project 03",
             category: "Automation",
             technologies: "Python, Scripts, APIs, Workflows",
-            image: "/images/placeholder.webp",
-            description: "A placeholder project card for automation tools and workflow systems."
+            image: "/images/project-3.webp",
+            description: "Automation engine and API integration system for background data processing."
         },
         {
             id: 4,
             title: "Project 04",
             category: "Web App",
             technologies: "React, UI Design, Backend, Deployment",
-            image: "/images/placeholder.webp",
-            description: "A placeholder project card for a polished web application."
+            image: "/images/project-4.webp",
+            description: "Interactive web dashboard with responsive layouts and sleek dark theme."
         },
         {
             id: 5,
             title: "Project 05",
             category: "Interactive Tool",
             technologies: "JavaScript, Canvas, Logic, UI",
-            image: "/images/placeholder.webp",
-            description: "A placeholder project card for an interactive technical tool."
+            image: "/images/project-5.webp",
+            description: "Custom technical tool built with rich animations and interactive visuals."
         },
         {
             id: 6,
             title: "Project 06",
             category: "Machine Learning",
             technologies: "Python, ML, Data, Dashboard",
-            image: "/images/placeholder.webp",
-            description: "A placeholder project card for a machine learning experiment."
+            image: "/images/project-1.webp",
+            description: "Machine learning experiment and data analysis dashboard."
         },
         {
             id: 7,
             title: "Project 07",
             category: "AI Assistant",
             technologies: "Python, LLMs, Tools, Automation",
-            image: "/images/placeholder.webp",
-            description: "A placeholder project card for an AI assistant or agent."
+            image: "/images/project-2.webp",
+            description: "Autonomous AI assistant and multi-agent workflow system."
         },
         {
             id: 8,
             title: "Project 08",
             category: "Mobile / Cloud",
             technologies: "Mobile, Cloud, Auth, Database",
-            image: "/images/placeholder.webp",
-            description: "A placeholder project card for a mobile or cloud-based product."
+            image: "/images/project-3.webp",
+            description: "Cloud-native web service and cross-platform product interface."
         }
     ],
     contact: {

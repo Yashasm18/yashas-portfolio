@@ -34,7 +34,8 @@ h6 {
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* Allow scrolling on mobile */

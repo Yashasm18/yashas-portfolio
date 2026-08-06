@@ -19,7 +19,12 @@ const Navbar = () => {
       touchMultiplier: 2,
       infinite: false
     });
-    lenis.stop();
+    if (sessionStorage.getItem('siteLoaded')) {
+      lenis.start();
+      document.body.style.overflowY = "auto";
+    } else {
+      lenis.stop();
+    }
     function raf(time) {
       lenis?.raf(time);
       requestAnimationFrame(raf);

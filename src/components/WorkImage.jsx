@@ -3,13 +3,10 @@ import { MdArrowOutward } from "react-icons/md";
 const WorkImage = (props) => {
   const [isVideo, setIsVideo] = useState(false);
   const [video, setVideo] = useState("");
-  const handleMouseEnter = async () => {
+  const handleMouseEnter = () => {
     if (props.video) {
       setIsVideo(true);
-      const response = await fetch(`src/assets/${props.video}`);
-      const blob = await response.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      setVideo(blobUrl);
+      setVideo(`/video/${props.video}`);
     }
   };
   return <div className="work-image">

@@ -26,18 +26,18 @@ export const LoadingProvider = ({ children }) => {
 
   useEffect(() => {
     if (sessionStorage.getItem('siteLoaded')) {
-      // Returning visitor: apply instant styles without the heavy animation
       document.body.style.overflowY = "auto";
+      document.body.style.overflowX = "hidden";
       document.body.style.backgroundColor = "#0b080c";
       const main = document.getElementsByTagName("main")[0];
       if (main) main.classList.add("main-active");
-      
-      // Auto-start lenis and animations
-      import("../utils/initialFX").then((module) => {
-        if (module.initialFX) module.initialFX();
-      });
+
+      setTimeout(() => {
+        import("../utils/initialFX").then((module) => {
+          if (module.initialFX) module.initialFX();
+        });
+      }, 50);
     } else if (window.innerWidth <= 768) {
-      // Auto-start animations on mobile since there's no 3D model
       import("../utils/initialFX").then((module) => {
         if (module.initialFX) {
           setTimeout(() => {
