@@ -36,13 +36,17 @@ jobs:
         run: npm run build
 
       - name: Deploy to Vercel Production
-        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') && secrets.VERCEL_TOKEN != ''
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           CI: "1"
         run: |
+          if [ -z "${VERCEL_TOKEN}" ]; then
+            echo "VERCEL_TOKEN secret is not configured — skipping deployment."
+            exit 0
+          fi
           npx vercel pull --yes --environment=production --token="${VERCEL_TOKEN}"
           npx vercel build --prod --token="${VERCEL_TOKEN}"
           npx vercel deploy --prebuilt --prod --token="${VERCEL_TOKEN}"
