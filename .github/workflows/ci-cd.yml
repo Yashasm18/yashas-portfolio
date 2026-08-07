@@ -30,7 +30,8 @@ jobs:
         run: npm ci
 
       - name: Run Linter
-        run: npm run lint || true
+        run: npm run lint
+        continue-on-error: true
 
       - name: Build production bundle
         run: npm run build
