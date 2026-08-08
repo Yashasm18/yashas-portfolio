@@ -103,67 +103,91 @@ export const config = {
     projects: [
         {
             id: 1,
-            title: "Project 01",
-            category: "AI / Software",
-            technologies: "Python, React, APIs, Automation",
+            title: "Fair-Grade",
+            category: "Multi-Agent AI / Responsible AI",
+            technologies: "TypeScript, React, Gemini API, FastAPI, UN SDG 4",
             image: "/images/project-1.webp",
-            description: "An AI-driven software platform with automated workflows and modern web frontend."
+            description: "An AI-driven, multi-agent evaluation engine designed to detect and mitigate implicit grading bias with multimodal OCR & HITL architecture.",
+            github: "https://github.com/Yashasm18/Fair-Grade",
+            live: "https://team-vektor-fairgrade.vercel.app/"
         },
         {
             id: 2,
-            title: "Project 02",
-            category: "Full Stack",
-            technologies: "React, Node.js, Database, REST APIs",
+            title: "ForgeAgent",
+            category: "Agentic AI / Safety & Tooling",
+            technologies: "Python, MCP, Capability Memory, LLM Tools",
             image: "/images/project-2.webp",
-            description: "Full-stack application with real-time data sync and modular backend design."
+            description: "Agent safety & capability memory system allowing agents (Codex, Cursor, Claude Code) to reuse verified capabilities instantly.",
+            github: "https://github.com/Yashasm18/ForgeAgent",
+            live: "https://yashasm18.github.io/ForgeAgent/"
         },
         {
             id: 3,
-            title: "Project 03",
-            category: "Automation",
-            technologies: "Python, Scripts, APIs, Workflows",
+            title: "Email Triage Env",
+            category: "Autonomous AI Agents",
+            technologies: "Python, PyTorch, OpenEnv, Chain-of-Thought, FastAPI",
             image: "/images/project-3.webp",
-            description: "Automation engine and API integration system for background data processing."
+            description: "Intelligent Agentic Workflow for Autonomous Enterprise Email Triage with Chain-of-Thought reasoning & Self-Correcting logic.",
+            github: "https://github.com/Yashasm18/email-triage-env",
+            live: "https://huggingface.co/spaces/souller/email-triage-env"
         },
         {
             id: 4,
-            title: "Project 04",
-            category: "Web App",
-            technologies: "React, UI Design, Backend, Deployment",
+            title: "Kyvra",
+            category: "Systems & Infrastructure",
+            technologies: "Java, NIO Event Loops, Lock-striped Shards, LRU Cache, AOF",
             image: "/images/project-4.webp",
-            description: "Interactive web dashboard with responsive layouts and sleek dark theme."
+            description: "Redis-compatible in-memory key-value store built in pure Java with zero external dependencies, NIO event loops, and O(1) LRU eviction.",
+            github: "https://github.com/Yashasm18/kyvra"
         },
         {
             id: 5,
-            title: "Project 05",
-            category: "Interactive Tool",
-            technologies: "JavaScript, Canvas, Logic, UI",
+            title: "Torvaix",
+            category: "AI Workspace / Platform",
+            technologies: "TypeScript, React, Next.js, Node.js, AI Memory",
             image: "/images/project-5.webp",
-            description: "Custom technical tool built with rich animations and interactive visuals."
+            description: "An autonomous AI workspace that remembers, reasons, and acts to automate complex personal and team workflows.",
+            github: "https://github.com/Yashasm18/Torvaix",
+            live: "https://yashasm18.github.io/Torvaix/"
         },
         {
             id: 6,
-            title: "Project 06",
-            category: "Machine Learning",
-            technologies: "Python, ML, Data, Dashboard",
+            title: "Cognita",
+            category: "EdTech / Multimodal AI",
+            technologies: "Python, Multimodal LLM, Speech & Vision AI",
             image: "/images/project-1.webp",
-            description: "Machine learning experiment and data analysis dashboard."
+            description: "Your AI study companion that speaks, shows, and teaches complex academic concepts interactively.",
+            github: "https://github.com/Yashasm18/Cognita"
         },
         {
             id: 7,
-            title: "Project 07",
-            category: "AI Assistant",
-            technologies: "Python, LLMs, Tools, Automation",
+            title: "GrowEasy CSV Importer",
+            category: "SaaS / Data Tooling",
+            technologies: "TypeScript, React, AI Schema Mapping, Vercel",
             image: "/images/project-2.webp",
-            description: "Autonomous AI assistant and multi-agent workflow system."
+            description: "An intelligent, AI-powered CSV importer built for CRM migrations with dynamic field matching and validation.",
+            github: "https://github.com/Yashasm18/groweasy-csv",
+            live: "https://growcsvimporter.vercel.app/"
         },
         {
             id: 8,
-            title: "Project 08",
-            category: "Mobile / Cloud",
-            technologies: "Mobile, Cloud, Auth, Database",
+            title: "StegaCrypt",
+            category: "Cybersecurity / Security Tools",
+            technologies: "Java, LSB Encoding, Steganography, Web API",
             image: "/images/project-3.webp",
-            description: "Cloud-native web service and cross-platform product interface."
+            description: "Core Java steganography tool that hides secret encrypted messages inside images using LSB encoding.",
+            github: "https://github.com/Yashasm18/StegaCrypt",
+            live: "https://stegacrypt.vercel.app"
+        },
+        {
+            id: 9,
+            title: "React E-Commerce Storefront",
+            category: "Full Stack E-Commerce",
+            technologies: "React 19, Vite, Razorpay, Clerk Auth, Serverless",
+            image: "/images/project-4.webp",
+            description: "A production indie book store built with React 19, Razorpay payments, Clerk auth, and serverless functions.",
+            github: "https://github.com/Yashasm18/react-ecommerce-storefront",
+            live: "https://wordsofvamshi.com"
         }
     ],
     contact: {

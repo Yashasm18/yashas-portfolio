@@ -295,6 +295,46 @@
   box-shadow: 0 10px 30px rgba(194, 164, 255, 0.4);
 }
 
+.work-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.work-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.work-action-btn:hover {
+  background: var(--accentColor);
+  color: #000;
+  border-color: var(--accentColor);
+  transform: translateY(-2px);
+}
+
+.work-action-btn.live-btn {
+  background: var(--accentColor);
+  color: #000;
+  border-color: var(--accentColor);
+}
+
+.work-action-btn.live-btn:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 4px 15px rgba(194, 164, 255, 0.3);
+}
+
 /* Mobile: Stack work items vertically when GSAP pinning is disabled */
 @media only screen and (max-width: 768px) {
   .work-section {

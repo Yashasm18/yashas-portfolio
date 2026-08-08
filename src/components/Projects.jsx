@@ -3,31 +3,38 @@ import { useRef, useEffect } from 'react';
 const projects = [
   {
     number: '01',
-    title: 'Project 01',
-    category: 'AI / Software',
-    tools: 'Python, React, APIs, Automation',
-    image: '/images/placeholder.webp',
+    title: 'Fair-Grade',
+    category: 'Multi-Agent AI',
+    tools: 'TypeScript, React, Gemini API, FastAPI',
+    image: '/images/project-1.webp',
+    github: 'https://github.com/Yashasm18/Fair-Grade',
+    live: 'https://team-vektor-fairgrade.vercel.app/'
   },
   {
     number: '02',
-    title: 'Project 02',
-    category: 'Full Stack',
-    tools: 'React, Node.js, Database, REST APIs',
-    image: '/images/placeholder.webp',
+    title: 'ForgeAgent',
+    category: 'Agentic AI / Safety',
+    tools: 'Python, MCP, Capability Memory, LLM Tools',
+    image: '/images/project-2.webp',
+    github: 'https://github.com/Yashasm18/ForgeAgent',
+    live: 'https://yashasm18.github.io/ForgeAgent/'
   },
   {
     number: '03',
-    title: 'Project 03',
-    category: 'Automation',
-    tools: 'Python, Scripts, APIs, Workflows',
-    image: '/images/placeholder.webp',
+    title: 'Email Triage Env',
+    category: 'Autonomous Agents',
+    tools: 'Python, PyTorch, OpenEnv, Chain-of-Thought',
+    image: '/images/project-3.webp',
+    github: 'https://github.com/Yashasm18/email-triage-env',
+    live: 'https://huggingface.co/spaces/souller/email-triage-env'
   },
   {
     number: '04',
-    title: 'Project 04',
-    category: 'Web App',
-    tools: 'React, UI Design, Backend, Deployment',
-    image: '/images/placeholder.webp',
+    title: 'Kyvra',
+    category: 'Systems / In-Memory Store',
+    tools: 'Java, NIO Event Loops, Lock-striped Shards, AOF',
+    image: '/images/project-4.webp',
+    github: 'https://github.com/Yashasm18/kyvra'
   }
 ];
 

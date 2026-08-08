@@ -16,6 +16,43 @@ const SocialIcons = () => {
 
     const cleanupFns = [];
 
+    // --- Proximity detection: brighten as cursor approaches ---
+    let targetProximity = 0;
+    let currentProximity = 0;
+    let proximityAnimId;
+
+    const handleGlobalMouseMove = (e) => {
+      const rect = social.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      const dx = e.clientX - centerX;
+      const dy = e.clientY - centerY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      const maxRadius = 380; // Distance in px where brightening begins
+      if (distance < maxRadius) {
+        targetProximity = Math.pow(1 - distance / maxRadius, 1.2);
+      } else {
+        targetProximity = 0;
+      }
+    };
+
+    const updateProximity = () => {
+      currentProximity += (targetProximity - currentProximity) * 0.12;
+      social.style.setProperty("--proximity", currentProximity.toFixed(3));
+      proximityAnimId = requestAnimationFrame(updateProximity);
+    };
+
+    window.addEventListener("mousemove", handleGlobalMouseMove, { passive: true });
+    proximityAnimId = requestAnimationFrame(updateProximity);
+
+    cleanupFns.push(() => {
+      window.removeEventListener("mousemove", handleGlobalMouseMove);
+      cancelAnimationFrame(proximityAnimId);
+    });
+
+    // --- Magnetic icon tracking ---
     social.querySelectorAll("span").forEach((item) => {
       const elem = item;
       const link = elem.querySelector("a");
