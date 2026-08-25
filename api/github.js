@@ -101,23 +101,25 @@ async function fetchFromPublicProfile(username) {
     if (!response.ok) return null;
     const html = await response.text();
 
+    const tdMatches = [...html.matchAll(/<td[^>]*data-date="(\d{4}-\d{2}-\d{2})"[^>]*id="([^"]+)"[^>]*data-level="(\d+)"/g)];
+    const tooltipMatches = [...html.matchAll(/<tool-tip[^>]*for="([^"]+)"[^>]*>([\s\S]*?)<\/tool-tip>/g)];
+
+    const tipMap = new Map();
+    for (const m of tooltipMatches) {
+      tipMap.set(m[1], m[2].trim());
+    }
+
     const daysByDate = {};
-
-    // Exact match for <td ... data-date="YYYY-MM-DD" ... data-level="L"> followed by <tool-tip>text</tool-tip>
-    const cellRegex = /<td[^>]*data-date="(\d{4}-\d{2}-\d{2})"[^>]*data-level="(\d+)"[^>]*>[\s\S]*?<tool-tip[^>]*>([\s\S]*?)<\/tool-tip>/g;
-
-    let match;
-    while ((match = cellRegex.exec(html)) !== null) {
-      const date = match[1];
-      const level = parseInt(match[2], 10);
-      const tipText = match[3].trim();
-
+    for (const m of tdMatches) {
+      const date = m[1];
+      const id = m[2];
+      const level = parseInt(m[3], 10);
+      const tip = tipMap.get(id) || '';
       let count = 0;
-      const countMatch = tipText.match(/^([\d,]+)\s+contribution/i);
+      const countMatch = tip.match(/^([\d,]+)\s+contribution/i);
       if (countMatch) {
         count = parseInt(countMatch[1].replace(/,/g, ''), 10);
       }
-
       daysByDate[date] = { date, level, count };
     }
 
@@ -184,7 +186,11 @@ function buildResponse(calendar, totalContributions) {
 
   // Current streak
   let currentStreak = 0;
-  const todayStr = new Date().toISOString().split('T')[0];
+  // Get date in IST (UTC+5:30)
+  const now = new Date();
+  const istOffsetMs = 5.5 * 60 * 60 * 1000;
+  const istNow = new Date(now.getTime() + (now.getTimezoneOffset() * 60 * 1000) + istOffsetMs);
+  const todayStr = istNow.toISOString().split('T')[0];
 
   let startIdx = 0;
   // If today has 0 contributions so far, check starting from yesterday
