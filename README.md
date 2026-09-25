@@ -2,7 +2,7 @@
 
 # Yashas M's Developer Portfolio
 
-**A high-performance developer portfolio built with React 19, Three.js, and GSAP.**
+**A high-performance developer portfolio built with React 19, Three.js, and GASP.**
 
 [![Live Demo](https://img.shields.io/badge/▶_LIVE_DEMO-yashas--portfolio.vercel.app-blueviolet?style=for-the-badge&logo=vercel)](https://yashas-portfolio-mauve.vercel.app)
 [![CI/CD](https://img.shields.io/github/actions/workflow/status/Yashasm18/yashas-portfolio/ci-cd.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=CI%2FCD)](https://github.com/Yashasm18/yashas-portfolio/actions/workflows/ci-cd.yml)
